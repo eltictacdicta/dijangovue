@@ -4,19 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django</title>
+    <title>Document</title>
 </head>
 <body>
-    {{ form.errors }}
-    <form action="{% url 'updatecomment' comment.id %}" method="post">
+    <form action="" method="post">
         {% csrf_token %}
-        {{ form.text }}
+        {{ form }}
         <input type="submit" value="Enviar">
     </form>
-   <style>
-    .form-input {
-        width: 100%;
-    }
-   </style>
+    
 </body>
 </html>

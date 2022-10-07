@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Comment
-from .forms import CommentForm
+from .forms import CommentForm, ContactForm
 
 # Create your views here.
 def index(request):
@@ -29,8 +29,10 @@ def update(request, pk):
 
     if request.method == 'POST':
         form = CommentForm(request.POST, instance=comment)
+
+        print(form.errors.as_json())
         if form.is_valid():
-            form.save()
+            form.save(commit=False)
             return redirect('updatecomment',pk=comment.id)
     else:
         form = CommentForm(instance=comment)
@@ -38,4 +40,11 @@ def update(request, pk):
     return render(request,'comment/update.html', {
         'form':form,
         'comment':comment
+    })
+
+
+def contact(request):
+    form = ContactForm()
+    return render(request,'comment/contact.html', {
+        'form':form
     })
