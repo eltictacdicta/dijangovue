@@ -6,16 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     {% load static %}
+    {% load bootstrap %}
 
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 </head>
 <body>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.errors }}
-        {{ form }}
-        <input type="submit" value="Enviar">
-    </form>
+    <div class="container">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {% for field in form %}
+              {% for error in field.errors  %}
+                {{ error }}
+              {% endfor %}
+            {% endfor %}
+
+            {{ form|bootstrap }}
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+    
     
 </body>
 </html>
