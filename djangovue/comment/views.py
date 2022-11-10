@@ -44,7 +44,15 @@ def update(request, pk):
 
 
 def contact(request):
-    form = ContactForm()
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('indexcomment')
+    else:
+        form = ContactForm()
+
     return render(request,'comment/contact.html', {
         'form':form
     })
+    
