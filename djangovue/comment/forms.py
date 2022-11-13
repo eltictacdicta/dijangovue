@@ -28,3 +28,5 @@ class ContactForm(forms.Form):
     date_birth = forms.DateField(widget=forms.DateInput(),label='Fecha de nacimiento')
     email = forms.EmailField(label="Correo")
     #mail = forms.CharField(label="Email", validators=[EmailValidator("No es un email válido")])
+    document = forms.FileField(label="Documento")
+    terms = forms.BooleanField(label="Condiciones de servicio")

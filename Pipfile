@@ -8,6 +8,7 @@ django = "*"
 pymysql = "*"
 djangorestframework = "*"
 django-bootstrap-form = "*"
+pillow = "*"
 
 [dev-packages]
 
