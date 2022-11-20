@@ -12,6 +12,13 @@
 </head>
 <body>
     <div class="container">
+        {% if messages %}
+
+            {% for m in messages %}
+              <div class="alert {% if m.tags %}alert-{{m.tags}}{% endif %}">{{m}}</div>
+            {% endfor %}
+
+        {% endif %}
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% if form.errors %}

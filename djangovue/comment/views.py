@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from .models import Comment,Contact
 from .forms import CommentForm, ContactForm
 
@@ -15,7 +16,7 @@ def add(request):
         form = CommentForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('indexcomment')
+            return redirect('comment:indexcomment')
     else:
         form = CommentForm()
 
@@ -35,7 +36,7 @@ def update(request, pk):
         print(form.errors.as_json())
         if form.is_valid():
             form.save(commit=False)
-            return redirect('updatecomment',pk=comment.id)
+            return redirect('comment:updatecomment',pk=comment.id)
     else:
         form = CommentForm(instance=comment)
 
@@ -56,9 +57,12 @@ def contact(request):
             contact.phone = form.cleaned_data['phone']
             contact.email = form.cleaned_data['email']
             contact.date_birth = form.cleaned_data['date_birth']
-            contact.document = request.FILES['document']
+            if 'document' in request.FILES:
+                contact.document = request.FILES['document']
             contact.save()
 
+            messages.add_message(request, messages.INFO, 'Contacto recibido')
+            return redirect('comment:indexcontact')
             #form.save()
             #return redirect('indexcomment')
     else:
