@@ -1,43 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% load static %}
-    {% load bootstrap %}
+{% extends "comment/base.html" %}
+{% load bootstrap %}
+{% block contact %}
+<div class="container mt-3">
+  {% if messages %}
 
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-</head>
-<body>
-    <div class="container">
-        {% if messages %}
+      {% for m in messages %}
+        <div class="alert {% if m.tags %}alert-{{m.tags}}{% endif %}">{{m}}</div>
+      {% endfor %}
 
-            {% for m in messages %}
-              <div class="alert {% if m.tags %}alert-{{m.tags}}{% endif %}">{{m}}</div>
-            {% endfor %}
-
-        {% endif %}
-        <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% if form.errors %}
-              {% for field in form %}
-                {% for error in field.errors  %}
-                <div class="alert alert-danger" role="alert">
-                  <strong>{{field.name}}: </strong>{{ error }}
-                </div>
-                  
-                {% endfor %}
-              {% endfor %}
-            {% endif %}
-            
-
-            {{ form|bootstrap }}
-            <input type="submit" value="Enviar">
-        </form>
+  {% endif %}
+  <div class="card">
+    <div class="card-header">
+      Formulario de contacto
     </div>
+    <div class="card-body">
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.errors %}
+          {% for field in form %}
+            {% for error in field.errors  %}
+            <div class="alert alert-danger" role="alert">
+              <strong>{{field.name}}: </strong>{{ error }}
+            </div>
+              
+            {% endfor %}\
+          {% endfor %}
+        {% endif %}
+        
+
+        {{ form|bootstrap }}
+        <input type="submit" class="btn btn-primary" value="Enviar">
+    </form>
+    </div>
+  </div>
+  
+</div>
+
+
+
+{% endblock %}
     
-    
-</body>
-</html>

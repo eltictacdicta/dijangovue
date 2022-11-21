@@ -57,6 +57,8 @@ def contact(request):
             contact.phone = form.cleaned_data['phone']
             contact.email = form.cleaned_data['email']
             contact.date_birth = form.cleaned_data['date_birth']
+            contact.sex = form.cleaned_data['sex']
+            contact.type_contact = form.cleaned_data['type_contact']
             if 'document' in request.FILES:
                 contact.document = request.FILES['document']
             contact.save()
