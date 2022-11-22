@@ -4,8 +4,8 @@ from .views import add, index, update, contact
 
 app_name='comment'
 urlpatterns = [
-    path('', index, name="indexcomment"),
-    path('add', add, name="addcomment"),
-    path('contact', contact, name="indexcontact"),
-    path('update/<int:pk>', update, name="updatecomment"),
+    path('', index, name="index"),
+    path('add', add, name="add"),
+    path('contact', contact, name="contact"),
+    path('update/<int:pk>', update, name="update"),
 ]

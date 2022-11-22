@@ -16,7 +16,7 @@ def add(request):
         form = CommentForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('comment:indexcomment')
+            return redirect('comment:index')
     else:
         form = CommentForm()
 
@@ -36,7 +36,7 @@ def update(request, pk):
         print(form.errors.as_json())
         if form.is_valid():
             form.save(commit=False)
-            return redirect('comment:updatecomment',pk=comment.id)
+            return redirect('comment:update',pk=comment.id)
     else:
         form = CommentForm(instance=comment)
 
@@ -64,7 +64,7 @@ def contact(request):
             contact.save()
 
             messages.add_message(request, messages.INFO, 'Contacto recibido')
-            return redirect('comment:indexcontact')
+            return redirect('comment:index')
             #form.save()
             #return redirect('indexcomment')
     else:
