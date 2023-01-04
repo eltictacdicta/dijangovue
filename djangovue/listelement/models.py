@@ -21,3 +21,6 @@ class Element(models.Model):
     description = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     type = models.ForeignKey(Type, on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=10,decimal_places=2, default=6.10)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
