@@ -26,7 +26,7 @@ class ElementViewSet(viewsets.ModelViewSet):
         serializer = ElementSerializer(queryset, many=False)
         return Response(serializer.data)
 
-class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
+class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
     @action(detail=True, methods=['get'])
