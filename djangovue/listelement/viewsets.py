@@ -49,7 +49,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
         serializer = CategorySerializer(queryset, many=False)
         return Response(serializer.data)
 
-class TypeViewSet(viewsets.ReadOnlyModelViewSet):
+class TypeViewSet(viewsets.ModelViewSet):
     serializer_class = TypeSerializer
     queryset = Type.objects.all()
     @action(detail=True, methods=['get'])
