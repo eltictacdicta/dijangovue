@@ -11,6 +11,15 @@ from comment.models import Comment
 class ElementViewSet(viewsets.ModelViewSet):
     serializer_class = ElementSerializer
     queryset = Element.objects.all()
+
+    def perform_create(self, serializer):
+        cateid = self.request.data.get("category_id")
+        typeid = self.request.data.get("type_id")
+        serializer.save(
+            category=Category.objects.get(pk=cateid),
+            type=Type.objects.get(pk=typeid)
+        )
+
     #Con el siguiente metodo si ponemos elements/all nos saca todos los elementos sin paginaciones
     @action(detail=False, methods=['get'])
     def all(self, request):
