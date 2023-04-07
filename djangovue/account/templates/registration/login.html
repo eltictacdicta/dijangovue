@@ -3,17 +3,18 @@
 
 {% block content %}
 
-{% if form.errors %}
-<p>Usuario o contraseña invalidos por favor prueba de nuevo</p>
-{% endif %}
 
-{% if user.is_authenticated %}
-    <p>Esas auntenticado</p>
-{% else %}
-    <p>Autengticate para entrar en el panel de control</p>
-{% endif %}
 
 <div class="login-form">
+    {% if form.errors %}
+    <p>Usuario o contraseña invalidos por favor prueba de nuevo</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <div class="alert alert-info">Estás auntenticado</div>
+    {% else %}
+        <div class="alert alert-info">No estás auntenticado</div>
+    {% endif %}
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 
