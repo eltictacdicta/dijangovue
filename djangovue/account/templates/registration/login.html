@@ -7,13 +7,13 @@
 
 <div class="login-form">
     {% if form.errors %}
-    {% include "comment/partials/alert.html" with msj="Usuario y/o contraseña invalidos por favor prueba de nuevo" only  %}
+    {% include "comment/partials/alert.html" with msj="Usuario y/o contraseña invalidos por favor prueba de nuevo" tag="danger"  %}
     {% endif %}
 
     {% if user.is_authenticated %}
         {% include "comment/partials/alert.html" with msj="Estás autenticado" only  %}
     {% else %}
-        {% include "comment/partials/alert.html" with msj="No estás autenticado" only  %}
+        {% include "comment/partials/alert.html" with msj="No estás autenticado" tag="warning"  %}
     {% endif %}
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}

@@ -8,6 +8,6 @@
 
 
 {% if msj %}
-<div class="alert alert-info">{{msj}}</div>
+<div class="alert {% if tag %} alert-{{tag}} {% else %} alert-info {% endif %}">{{msj}}</div>
 {% endif %}
 
