@@ -43,12 +43,14 @@ INSTALLED_APPS = [
     'listelement',
     'bootstrapform',
     'rest_framework',
-    'comment'
+    'comment',
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -145,3 +147,5 @@ EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
 EMAIL_HOST_USER = 'c7e4acef8d9757'
 EMAIL_HOST_PASSWORD = '32f1e27191e89d'
 EMAIL_PORT = '2525'
+
+CORS_ALLOWED_ORIGINS = [ "http://localhost:8081", ]

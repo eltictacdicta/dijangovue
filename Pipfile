@@ -9,6 +9,9 @@ pymysql = "*"
 djangorestframework = "*"
 django-bootstrap-form = "*"
 pillow = "*"
+django-cors-headers = "*"
+django-rename-app = "*"
+mysqlclient = "*"
 
 [dev-packages]
 
