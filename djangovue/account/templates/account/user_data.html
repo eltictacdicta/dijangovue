@@ -1,0 +1,13 @@
+{% extends "comment/base.html" %} {% comment %} Aprovechamos la el template del app comment {% endcomment %}
+{% load bootstrap %}
+
+{% block content %}
+
+<ul>
+    <li><strong>Usuario: </strong>{{user.username}}</li>
+    <li><strong>Email: </strong>{{user.email}}</li>
+</ul>
+{# Assumes you set up the password_reset view in your URLconf #}
+<p><a href="{% url 'login' %}">Login</a></p>
+
+{% endblock %}
