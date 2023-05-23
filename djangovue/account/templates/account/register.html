@@ -1,0 +1,25 @@
+{% extends "comment/base_user_account.html" %} {% comment %} Aprovechamos la el template del app comment {% endcomment %}
+{% load bootstrap %}
+
+{% block content %}
+
+
+
+<div class="login-form">
+<form method="post" action="{% url 'account:register' %}">
+{% csrf_token %}
+
+             
+                  
+                    {{ form | bootstrap }}
+                     
+                  <input type="submit" value="Registrar" class="btn btn-success float-right">
+                 
+            
+
+
+
+</form>
+
+
+{% endblock %}

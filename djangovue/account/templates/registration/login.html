@@ -6,6 +6,9 @@
 
 
 <div class="login-form">
+    {% if next %}
+      Si quieres acceder a {{next}} ¡Autenticate!
+    {% endif %}
     {% if form.errors %}
     {% include "comment/partials/alert.html" with msj="Usuario y/o contraseña invalidos por favor prueba de nuevo" tag="danger"  %}
     {% endif %}
